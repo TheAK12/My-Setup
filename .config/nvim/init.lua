@@ -30,6 +30,7 @@ require('lazy').setup {
   require 'plugins.comments',
   require 'plugins.extras',
   require 'plugins.harpoon',
+  require 'plugins.flash',
 }
 
 vim.opt.fillchars = { eob = " " }
