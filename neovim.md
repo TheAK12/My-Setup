@@ -1,6 +1,6 @@
 # Neovim Configuration
 
-A modern Neovim setup built with Lua and lazy.nvim plugin manager, inspired by [kickstart.nvim](https://github.com/hendrikmi/neovim-kickstart-config). This configuration provides a complete IDE-like experience with LSP support, autocompletion, fuzzy finding, file exploration, and more.
+A modern Neovim setup built with Lua and lazy.nvim plugin manager, inspired by [kickstart.nvim](https://github.com/hendrikmi/neovim-kickstart-config). This configuration provides a complete IDE-like experience with LSP support, autocompletion, fuzzy finding, file exploration, and enhanced navigation.
 
 ## 📁 Project Structure
 
@@ -20,6 +20,7 @@ A modern Neovim setup built with Lua and lazy.nvim plugin manager, inspired by [
         ├── colortheme.lua      # Color scheme
         ├── comments.lua        # Smart commenting
         ├── extras.lua          # Additional utilities
+        ├── flash.lua           # Enhanced navigation and search
         ├── gitsigns.lua        # Git integration
         ├── harpoon.lua         # Quick file navigation
         ├── lsp.lua             # LSP configuration
@@ -40,9 +41,11 @@ A modern Neovim setup built with Lua and lazy.nvim plugin manager, inspired by [
 - **Syntax Highlighting**: Tree-sitter for advanced syntax highlighting
 - **Git Integration**: Gitsigns for inline git status
 - **Quick Navigation**: Harpoon for lightning-fast file switching
+- **Enhanced Motion**: Flash.nvim for blazing fast jumps and searches
 - **Status Line**: Lualine for a beautiful status bar
 - **Buffer Management**: Bufferline for easy buffer navigation
 - **Auto-formatting**: Automatic code formatting on save
+- **Custom Dashboard**: Alpha-nvim with custom "NEOVIM" ASCII art
 
 ## 🚀 Installation
 
@@ -92,6 +95,7 @@ On first launch, lazy.nvim will automatically:
 | `n` | `<leader>sn` | Save without formatting |
 | `n` | `<C-q>` | Quit file |
 | `n` | `x` | Delete character (no copy) |
+| `n` | `<leader>m` | Find and replace word under cursor |
 
 ### Navigation
 
@@ -105,6 +109,16 @@ On first launch, lazy.nvim will automatically:
 | `n` | `<C-j>` | Move to window below |
 | `n` | `<C-h>` | Move to window left |
 | `n` | `<C-l>` | Move to window right |
+
+### Flash.nvim (Enhanced Navigation)
+
+| Mode | Keymap | Description |
+|------|--------|-------------|
+| `n`, `x`, `o` | `s` | Flash jump (quickly jump to any location) |
+| `n`, `x`, `o` | `S` | Flash Treesitter (jump to treesitter nodes) |
+| `o` | `r` | Remote Flash |
+| `o`, `x` | `R` | Treesitter Search |
+| `c` | `<C-s>` | Toggle Flash Search |
 
 ### Window Management
 
@@ -278,6 +292,7 @@ Key settings in `lua/core/options.lua`:
 - **Splits**: Open below and right
 - **Swap files**: Disabled
 - **Sign column**: Always visible
+- **Yank Highlighting**: Text highlights briefly when yanked
 
 ### Plugins
 
@@ -290,12 +305,13 @@ Key settings in `lua/core/options.lua`:
 5. **telescope.nvim** - Fuzzy finder
 6. **nvim-treesitter** - Syntax highlighting
 7. **neo-tree.nvim** - File explorer
+8. **flash.nvim** - Enhanced navigation and motion
 
 #### UI Plugins
 
 1. **lualine.nvim** - Status line
 2. **bufferline.nvim** - Buffer line
-3. **alpha-nvim** - Start screen
+3. **alpha-nvim** - Start screen with custom ASCII art
 4. **nvim-web-devicons** - Icons
 
 #### Utility Plugins
@@ -374,10 +390,15 @@ Add custom keybindings in `lua/core/keymaps.lua`:
 vim.keymap.set('n', '<leader>custom', '<cmd>YourCommand<CR>', { desc = 'Description' })
 ```
 
+### Customizing Dashboard
+
+The custom "NEOVIM" ASCII art in `lua/plugins/alpha.lua` can be modified to your preference. Edit the `dashboard.section.header.val` table with your own ASCII art.
+
 ## 📚 Learning Resources
 
 - **Neovim Docs**: `:help` or visit [neovim.io](https://neovim.io/doc/)
 - **lazy.nvim**: [GitHub](https://github.com/folke/lazy.nvim)
+- **Flash.nvim**: [GitHub](https://github.com/folke/flash.nvim)
 - **LSP Guide**: `:help lsp`
 - **Telescope**: `:help telescope`
 - **Treesitter**: `:help treesitter`
