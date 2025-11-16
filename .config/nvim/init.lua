@@ -30,3 +30,5 @@ require('lazy').setup {
   require 'plugins.comments',
   require 'plugins.extras',
 }
+
+vim.opt.fillchars = { eob = " " }
