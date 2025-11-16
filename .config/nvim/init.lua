@@ -29,6 +29,7 @@ require('lazy').setup {
   require 'plugins.tabindent',
   require 'plugins.comments',
   require 'plugins.extras',
+  require 'plugins.harpoon',
 }
 
 vim.opt.fillchars = { eob = " " }
